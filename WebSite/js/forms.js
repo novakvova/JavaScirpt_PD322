@@ -20,3 +20,12 @@ image.addEventListener('change', function(event) {
         console.log('No file selected');
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    //console.log("Load DOM");
+    var phoneInput = document.getElementById('phone');
+    var maskOptions = {
+        mask: '+00(000) 00-00-000'
+    };
+    var mask = IMask(phoneInput, maskOptions);
+});
