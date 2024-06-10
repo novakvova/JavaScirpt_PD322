@@ -29,3 +29,20 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     var mask = IMask(phoneInput, maskOptions);
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("Begin load app");
+    const form = document.getElementById('needs-validation');
+    form.addEventListener('submit', event => {
+
+        if (!form.checkValidity()) {
+            event.preventDefault(); //підміна стандатної повіденки
+            event.stopPropagation();
+        } else {
+            event.preventDefault(); ////підміна стандатної повіденки
+        }
+        form.classList.add('was-validated');
+
+    }, false);
+});
+
