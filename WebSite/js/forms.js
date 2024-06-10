@@ -60,8 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         image: imageDataUrl
                     };
 
-                    // let users = JSON.parse(localStorage.getItem("users")) || [];
-                    let users = JSON.parse(localStorage.users) || [];
+                    let users = [];
+                    if(localStorage.users)
+                        users = JSON.parse(localStorage.users);
                     users.push(user);
                     localStorage.users = JSON.stringify(users);
                     window.location.href="/";
