@@ -60,9 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         image: imageDataUrl
                     };
 
-                    let users = JSON.parse(localStorage.getItem("users")) || [];
+                    // let users = JSON.parse(localStorage.getItem("users")) || [];
+                    let users = JSON.parse(localStorage.users) || [];
                     users.push(user);
-                    localStorage.setItem("users", JSON.stringify(users));
+                    localStorage.users = JSON.stringify(users);
                     window.location.href="/";
 
                     //alert("Registration successful!");
