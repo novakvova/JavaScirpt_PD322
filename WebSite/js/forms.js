@@ -22,12 +22,29 @@ image.addEventListener('change', function(event) {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    //console.log("Load DOM");
     var phoneInput = document.getElementById('phone');
     var maskOptions = {
         mask: '+00(000) 00-00-000'
     };
     var mask = IMask(phoneInput, maskOptions);
+    const emailInput =document.getElementById('email');
+
+    emailInput.addEventListener('input', function() {
+        var emailInput = this;
+        var email = emailInput.value;
+        console.log("On change email", email);
+        console.log("On change email", emailInput.className);
+        var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (email.match(pattern)) {
+            emailInput.className = "form-control is-valid";
+        } else {
+            emailInput.className = "form-control is-invalid";
+        }
+    });
+
+
+
+
 });
 
 document.addEventListener('DOMContentLoaded', () => {
