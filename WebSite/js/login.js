@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('needs-validation');
     form.addEventListener('submit', event => {
-
         event.preventDefault(); //підміна стандатної повіденки
         if (!form.checkValidity()) {
             event.stopPropagation();
@@ -23,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!userFound) {
                 alert("Дані вказано не вірно");
             }
-
         }
         form.classList.add('was-validated');
 
