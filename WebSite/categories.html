@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Розетка</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/site.css" rel="stylesheet"/>
+    <script src="/js/header.js"></script>
+</head>
+<body>
+<script> loadDOM("_header.html"); </script>
+<div class="container">
+    <h1 class="text-center">Список категорій</h1>
+
+</div>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/axios.min.js"></script>
+<script>
+    const url = "https://pd322.itstep.click/api/Category/CategoryGetAsync";
+    axios.get(url)
+        .then(resp => {
+            console.log("Результат", resp.data);
+        });
+</script>
+</body>
+</html>
