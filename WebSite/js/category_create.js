@@ -34,6 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const description = document.getElementById("description").value;
             const image = document.getElementById('image');
             if (image.files && image.files[0]) {
+                const server = "https://pd322.itstep.click/";
+                const url = server + 'api/Category/CreateCategory';
+                const model = {
+                    name,
+                    description,
+                    "imageFile": image.files[0]
+                }
+                axios.post(url, model, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                    .then(response => {
+                        window.location ="/categories.html";
+                    })
+                    .catch(error => {
+                        console.error('Error sending data:', error);
+                    });
 
             } else {
                 alert("Please select a profile picture.");
