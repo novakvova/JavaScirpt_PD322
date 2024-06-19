@@ -5,6 +5,7 @@
     <title>Розетка</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/site.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/bootstrap-icons/font/bootstrap-icons.min.css">
     <script src="/js/header.js"></script>
 </head>
 <body>
@@ -22,12 +23,7 @@
         </tr>
         </thead>
         <tbody id="categories">
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
+
         </tbody>
     </table>
 
@@ -58,6 +54,12 @@
                         </td>
                         <td>${cat.name}</td>
                         <td>${cat.description}</td>
+                        <td>${cat.description}</td>
+                        <td>
+                            <a href="/category_update.html">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                        </td>
                     </tr>
                     `;
                     categories.innerHTML+=content;
