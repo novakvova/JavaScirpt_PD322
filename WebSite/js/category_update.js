@@ -22,6 +22,23 @@ image.addEventListener('change', function(event) {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    const id = params.get('id');
+    console.log("id = ", id);
+    const server = "https://pd322.itstep.click/";
+
+    const name = document.getElementById("name");
+    const description = document.getElementById("description");
+
+    axios.get(server+"api/category/"+id)
+        .then(resp => {
+            console.log("category info", resp.data);
+            const {data} = resp;
+            name.value = data.name;
+            description.value = data.description;
+        });
+
 
     const form = document.getElementById('needs-validation');
     form.addEventListener('submit', event => {
@@ -30,15 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!form.checkValidity()) {
             event.stopPropagation();
         } else {
-            const name = document.getElementById("name").value;
-            const description = document.getElementById("description").value;
             const image = document.getElementById('image');
             if (image.files && image.files[0]) {
-                const server = "https://pd322.itstep.click/";
+
                 const url = server + 'api/Category/CreateCategory';
                 const model = {
-                    name,
-                    description,
+                    name: name.value,
+                    description: description.value,
                     "imageFile": image.files[0]
                 }
                 axios.post(url, model, {
