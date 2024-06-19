@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(url.search);
     const id = params.get('id');
     //console.log("id = ", id);
-    // const server = "https://pd322.itstep.click/";
-    const server = "http://127.0.0.1:5094/";
+    const server = "https://pd322.itstep.click/";
+    // const server = "http://127.0.0.1:5094/";
 
     const name = document.getElementById("name");
     const description = document.getElementById("description");
