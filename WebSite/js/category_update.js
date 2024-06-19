@@ -25,8 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
     const id = params.get('id');
-    console.log("id = ", id);
-    const server = "https://pd322.itstep.click/";
+    //console.log("id = ", id);
+    // const server = "https://pd322.itstep.click/";
+    const server = "http://127.0.0.1:5094/";
 
     const name = document.getElementById("name");
     const description = document.getElementById("description");
@@ -37,6 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const {data} = resp;
             name.value = data.name;
             description.value = data.description;
+            if(data.imagePath!==null) {
+                imagePreview.src=server+"images/320_"+data.imagePath;
+            }
         });
 
 
@@ -48,29 +52,29 @@ document.addEventListener('DOMContentLoaded', () => {
             event.stopPropagation();
         } else {
             const image = document.getElementById('image');
+            let file=null;
             if (image.files && image.files[0]) {
-
-                const url = server + 'api/Category/CreateCategory';
-                const model = {
-                    name: name.value,
-                    description: description.value,
-                    "imageFile": image.files[0]
-                }
-                axios.post(url, model, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                })
-                    .then(response => {
-                        window.location ="/categories.html";
-                    })
-                    .catch(error => {
-                        console.error('Error sending data:', error);
-                    });
-
-            } else {
-                alert("Please select a profile picture.");
+                file = image.files[0];
             }
+
+            const url = server + 'api/Category/EditCategory';
+            const model = {
+                id,
+                name: name.value,
+                description: description.value,
+                "imageFile": file
+            }
+            axios.put(url, model, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then(response => {
+                    window.location ="/categories.html";
+                })
+                .catch(error => {
+                    console.error('Error sending data:', error);
+                });
         }
         form.classList.add('was-validated');
 

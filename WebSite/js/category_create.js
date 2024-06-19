@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const description = document.getElementById("description").value;
             const image = document.getElementById('image');
             if (image.files && image.files[0]) {
-                const server = "https://pd322.itstep.click/";
+                // const server = "https://pd322.itstep.click/";
+                const server = "http://127.0.0.1:5094/";
                 const url = server + 'api/Category/CreateCategory';
                 const model = {
                     name,

@@ -47,9 +47,10 @@ namespace Core.Services
         public async Task EditAsync(EditCategoryDTO editCategoryDTO)
         {
             var category = _mapper.Map<CategoryEntity>(editCategoryDTO);
+            var entity = await _categoryRepository.GetByIDAsync(editCategoryDTO.Id);
+            category.ImagePath = entity.ImagePath; //залишаємо попередню фотку.
             if (editCategoryDTO.ImageFile != null)
             {
-                var entity = await _categoryRepository.GetByIDAsync(editCategoryDTO.Id);
                 if (entity.ImagePath != null)
                 {
                     await _filesService.DeleteImage(entity.ImagePath);
